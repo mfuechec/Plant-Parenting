@@ -1,4 +1,6 @@
 import React from 'react';
+import Home from './components/Home.js';
+import Login from './components/Login.js';
 import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default class App extends React.Component {
@@ -6,21 +8,67 @@ export default class App extends React.Component {
     super(props)
     this.state = {
       loggedIn: false,
-      user: ''
+      user: '',
+      logSelected: false,
+      usernameInput: '',
+      passwordInput: ''
     }
+    this.logging = this.logging.bind(this);
+    this.register = this.register.bind(this);
+    this.typingUserName = this.typingUserName.bind(this);
+    this.typingPassword = this.typingPassword.bind(this);
   }
+
+  logging() {
+    this.setState({
+      logSelected: true
+    })
+  }
+
+  register() {
+    // Check if username already exists
+
+    this.setState({
+      loggedIn: true,
+      user: this.state.usernameInput,
+      usernameInput: ''
+    })
+
+  }
+
+  typingUserName(event) {
+    this.setState({
+      usernameInput: event
+    })
+  }
+
+  typingPassword(event) {
+    this.setState({
+      passwordInput: event
+    })
+  }
+
   render() {
     if (this.state.loggedIn === false) {
-      return (
-        <View style={styles.container}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title} >Plant Parenthood</Text>
+      if (this.state.logSelected === false) {
+        return (
+          <View style={styles.container}>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title} >Plant Parenthood</Text>
+            </View>
+            <Home pressed={this.logging} />
           </View>
-          <View style={styles.buttonContainer}>
-            <Button style={styles.logInButton} title="Log in" />
+        );
+      } else {
+        return (
+          <View style={styles.container}>
+            <View style={styles.titleContainer}>
+              <Text style={styles.title} >Plant Parenthood</Text>
+            </View>
+            <Login typingPassword={this.typingPassword} typingUserName={this.typingUserName} submitted={this.register} />
           </View>
-        </View>
-      );
+        )
+      }
     } else {
       return (
         <View style={styles.container}>
@@ -28,7 +76,6 @@ export default class App extends React.Component {
             <Text style={styles.title} >Plant Parenthood</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <Button style={styles.buttons} title="Log in" />
             <Button style={styles.buttons} title="My Plants" />
             <Button style={styles.buttons} title="Calendar" />
           </View>
@@ -45,26 +92,17 @@ const styles = StyleSheet.create({
   },
 
   titleContainer: {
-    width: 500
+    width: 450
   },
 
   title: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 115,
-    paddingVertical: 35,
+    paddingHorizontal: 96,
+    paddingVertical: 30,
     fontSize: 25,
     backgroundColor: 'green'
-  },
-
-  buttonContainer: {
-    backgroundColor: 'lightgreen',
-    display: 'flex',
-    flexDirection: 'column',
-    height: 750,
-    alignItems: 'center',
-    justifyContent: 'center'
   },
 
   buttons: {
