@@ -1,25 +1,32 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
 
 export default function Login(props) {
     return (
         <View style={styles.buttonContainer}>
-            <Button style={styles.logInButton} onPress={props.pressed} title="Log in" />
+            <TouchableOpacity style={styles.logInButton} onPress={props.pressed}>
+                <Text style={styles.loginButtonText}>Login</Text>
+            </TouchableOpacity>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    logInButton: {
-        fontSize: 100,
+    loginButtonText: {
+        backgroundColor: 'green',
+        borderColor: 'white',
+        borderWidth: 1,
+        borderRadius: 12,
+        color: 'white',
+        fontSize: 24,
+        fontWeight: 'bold',
+        overflow: 'hidden',
+        padding: 12,
+        textAlign:'center',
     },
 
     buttonContainer: {
-        backgroundColor: 'lightgreen',
-        display: 'flex',
-        flexDirection: 'column',
-        height: 750,
-        alignItems: 'center',
-        justifyContent: 'center'
+        width: 200,
+        paddingTop: 120
     },
 })
