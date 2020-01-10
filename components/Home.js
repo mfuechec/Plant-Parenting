@@ -7,6 +7,9 @@ export default function Home(props) {
             <TouchableOpacity style={styles.logInButton} onPress={props.pressed}>
                 <Text style={styles.loginButtonText}>Login</Text>
             </TouchableOpacity>
+            <View style={{paddingTop: 375}}>
+                <Text>  A BadNewsBear Production</Text>
+            </View>
         </View>
     )
 }
@@ -28,6 +31,6 @@ const styles = StyleSheet.create({
     buttonContainer: {
         width: Dimensions.get('window').width/2,
         paddingTop: 120,
-        paddingLeft: 50
+        paddingLeft: 0
     },
 })

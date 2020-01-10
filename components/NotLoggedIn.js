@@ -9,12 +9,13 @@ export default function NotLoggedIn(props) {
           <View style={styles.mainContainer}>
             <View>
               <View style={styles.titleContainer}>
+                <ImageBackground style={styles.flower1} source={require('./sunflower.gif')} />
+                <ImageBackground style={styles.flower2} source={require('./potted.gif')}/>
                 <Text style={styles.title} >Plant Parenthood</Text>
               </View>
             </View>
             <View>
-            <Home pressed={props.logging} />
-            <ImageBackground style={styles.imgBackground} source={require('./blackAndWhitePlant.gif')}/>
+              <Home pressed={props.logging} />
             </View>
           </View>
         );
@@ -23,6 +24,8 @@ export default function NotLoggedIn(props) {
           <View style={styles.mainContainer}>
             <View>
                 <View style={styles.titleContainer}>
+                    <ImageBackground style={styles.flower1} source={require('./sunflower.gif')} />
+                    <ImageBackground style={styles.flower2} source={require('./potted.gif')}/>
                     <Text style={styles.title} >Plant Parenthood</Text>
                 </View>
             </View>
@@ -60,8 +63,23 @@ const styles = StyleSheet.create({
     width: 250,
     height: '68%',
     overflow: 'visible',
+  },
 
-},
+  flower1: {
+    width: 100,
+    height: 100,
+    position: 'absolute',
+    top: -75,
+    left: 100
+  },
+
+  flower2: {
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    top: -25,
+    left: 300
+  }
   
 });
   
