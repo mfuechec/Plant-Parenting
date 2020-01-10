@@ -1,7 +1,8 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "startExpo": "expo start",
+    "start": "nodemon server.js",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -12,12 +13,18 @@
     "expo": "~36.0.0",
     "expo-cli": "^3.11.3",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
     "mongodb": "^3.4.1",
+    "nodemon": "^2.0.2",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
     "react-native-elements": "^1.2.7",
+    "react-native-link": "^4.1.0",
+    "react-native-video": "^5.0.2",
     "react-native-web": "~0.11.7",
+    "react-native-webview": "^8.0.3",
     "react-zlib-js": "^1.0.4",
     "watchman": "^1.0.0"
   },

@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from './Home.js';
 import Login from './Login.js';
-import { StyleSheet, Dimensions, Text, View } from 'react-native';
+import { StyleSheet, Dimensions, Text, View, ImageBackground } from 'react-native';
 
 export default function NotLoggedIn(props) {
     if (props.logSelected === false) {
@@ -14,6 +14,7 @@ export default function NotLoggedIn(props) {
             </View>
             <View>
             <Home pressed={props.logging} />
+            <ImageBackground style={styles.imgBackground} source={require('./blackAndWhitePlant.gif')}/>
             </View>
           </View>
         );
@@ -53,6 +54,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 25,
   },
+
+  imgBackground: {
+    marginTop: 25,
+    width: 250,
+    height: '68%',
+    overflow: 'visible',
+
+},
   
 });
   

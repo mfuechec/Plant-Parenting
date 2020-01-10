@@ -1,4 +1,4 @@
-import React, { isValidElement } from 'react';
+import React from 'react';
 import NotLoggedIn from './components/NotLoggedIn.js';
 import LoggedIn from './components/LoggedIn.js';
 import MyPlants from './components/MyPlants.js';
@@ -37,6 +37,21 @@ export default class App extends React.Component {
     this.alert = this.alert.bind(this);
     this.plantSelected = this.plantSelected.bind(this);
     this.backToMyPlants = this.backToMyPlants.bind(this);
+    this.signUp = this.signUp.bind(this);
+    this.logIn = this.logIn.bind(this);
+    this.backToLogIn = this.backToLogIn.bind(this);
+  }
+
+  backToLogIn() {
+    this.setState({
+      selected: 'none'
+    })
+  }
+
+  signUp() {
+    this.setState({
+      selected: 'Sign Up'
+    })
   }
 
   logging() {
@@ -45,8 +60,7 @@ export default class App extends React.Component {
     })
   }
 
-  register() {
-    // Check if username already exists
+  logIn() {
     if (this.isValid(this.state.usernameInput)) {
       this.setState({
         loggedIn: true,
@@ -54,12 +68,33 @@ export default class App extends React.Component {
         usernameInput: ''
       })
     } else {
-      // popup error message
+      Alert.alert(
+        'Login information does not match our records',
+        'Would you like to signup?',
+        [
+          {text: 'Sign Up', onPress: () => this.signUp},
+          {text: 'Log In'}
+        ],
+        {cancelable: false},
+      );
     }
   }
 
-  isValid() {
-    return true;
+  register() {
+    var userName = this.state.typingUserName;
+    var password = this.typingPassword;
+
+  }
+
+  isValid(userName) {
+    return true
+    // server.verifyLogin(userName, (err, res) => {
+    //   if (err) {
+    //     return false
+    //   } else {
+    //     return true
+    //   }
+    // })
   }
 
   typingUserName(event) {
@@ -168,7 +203,7 @@ export default class App extends React.Component {
   render() {
     if (this.state.loggedIn === false) {
       return (
-        <NotLoggedIn typingPassword={this.typingPassword} typingUserName={this.typingUserName} submitted={this.register} logging={this.logging} logSelected={this.state.logSelected} />
+        <NotLoggedIn typingPassword={this.typingPassword} typingUserName={this.typingUserName} submitted={this.logIn} logging={this.logging} logSelected={this.state.logSelected} />
       )
     } else {
       if (this.state.selected === 'none') {
@@ -178,7 +213,7 @@ export default class App extends React.Component {
       }
       if (this.state.selected === 'My Plants' || this.state.selected === 'Add New Plants') {
         return (
-          <MyPlants plantSelected={this.plantSelected} findPlantInfo={this.findPlantInfo} addPlant={this.addPlant} typingNumberOwned={this.typingNumberOwned} typingPlantName={this.typingPlantName} selected={(this.state.selected)} addNewPlants={this.addNewPlants} plantsOwned={this.state.plantsOwned} />
+          <MyPlants backToLogIn={this.backToLogIn} plantSelected={this.plantSelected} findPlantInfo={this.findPlantInfo} addPlant={this.addPlant} typingNumberOwned={this.typingNumberOwned} typingPlantName={this.typingPlantName} selected={(this.state.selected)} addNewPlants={this.addNewPlants} plantsOwned={this.state.plantsOwned} />
         )
       }
       if (this.state.selected === 'Plant Info') {
@@ -186,6 +221,11 @@ export default class App extends React.Component {
           <PlantInfo backToMyPlants={this.backToMyPlants} plantName={this.state.selectedPlantInfo.tfvname} scientificName={this.state.selectedPlantInfo.botname} otherNames={this.state.selectedPlantInfo.othname} imageUrl={this.state.selectedPlantInfo.imageurl} description={this.state.selectedPlantInfo.description} uses={this.state.selectedPlantInfo.uses} propogation={this.state.selectedPlantInfo.propogation} soil={this.state.selectedPlantInfo.soil} climate={this.state.selectedPlantInfo.climate} health={this.state.selectedPlantInfo.health}/>
         )
       }
+      // if (this.state.selected === 'Sign Up') {
+      //   return (
+      //     <SignUp typingPassword={this.typingPassword} typingUserName={this.typingUserName} submitted={this.register}/>
+      //   )
+      // }
       if (this.state.selected === 'My Calendar') {
         return (
           <MyCalendar />

@@ -12,24 +12,14 @@ MongoClient.connect(url, { useNewUrlParser: true }, (err, client) => {
     }
 })
 
-module.exports.checkLogin = (userName, callback) => {
+var checkLogin = function(userName, callback) {
     db.collection('users').findOne({ userName: userName }, (err, res) => {
         if (err) {
             callback(err, null)
         } else {
-            callback(null, err)
+            callback(null, res)
         }
     })
 }
 
-module.exports.createNewUser = () => {
-
-}
-
-module.exports.addPlants = () => {
-
-}
-
-module.exports.removePlants = () => {
-
-}
+module.exports.checkLogin = checkLogin;

@@ -10,6 +10,9 @@ export default function MyPlants(props) {
                 <View style={styles.titleContainer}>
                     <Text style={styles.title} >Plant Parenthood</Text>
                 </View>
+                <View>
+                    <Button title='Back' onPress={props.backToLogIn} />
+                </View>
                 <ScrollView>
                     <View style={styles.plantsAndCalendarContainer}>
                         <PlantList plantSelected={props.plantSelected} plantsOwned={props.plantsOwned} />
@@ -25,6 +28,9 @@ export default function MyPlants(props) {
             <View style={styles.mainContainer}>
                 <View style={styles.titleContainer}>
                     <Text style={styles.title} >Plant Parenthood</Text>
+                </View>
+                <View>
+                    <Button title='Back' onPress={props.backToLogIn} />
                 </View>
                 <ScrollView>
                     <View style={styles.plantsAndCalendarContainer}>
@@ -78,6 +84,6 @@ const styles = StyleSheet.create({
         top: Dimensions.get('window').height - Dimensions.get('window').height/6,
         height: Dimensions.get('window').height/12,
         width: Dimensions.get('window').width
-    }
+    },
 
   });

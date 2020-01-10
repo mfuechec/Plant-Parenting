@@ -1,7 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity, StyleSheet, Text, View, Dimensions } from 'react-native';
 
-export default function Login(props) {
+export default function Home(props) {
     return (
         <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.logInButton} onPress={props.pressed}>
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     },
 
     buttonContainer: {
-        width: 200,
-        paddingTop: 120
+        width: Dimensions.get('window').width/2,
+        paddingTop: 120,
+        paddingLeft: 50
     },
 })

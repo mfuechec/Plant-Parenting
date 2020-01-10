@@ -1,13 +1,12 @@
 import React from 'react';
-import { Button, StyleSheet, View, Text } from 'react-native';
-import { Input } from 'react-native-elements';
+import { Button, View } from 'react-native';
 
-export default function Login(props) {
+export default function SignUp(props) {
     return (
         <View style={styles.formContainer}>
             <Input style={styles.inputs} onChangeText={props.typingUserName} placeholder='Username' />
             <Input style={styles.inputs} onChangeText={props.typingPassword} placeholder='Password' />
-            <Button onPress={props.submitted} title="Log In" />
+            <Button onPress={props.submitted} title="Register" />
         </View>
     )
 }
